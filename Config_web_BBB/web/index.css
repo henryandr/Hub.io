@@ -1,0 +1,60 @@
+html, body{
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+  cursor: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  outline: none !important;
+}
+
+/* Font */
+@font-face{ 
+    font-family: EtG;
+    src: url('./fonts/Enter-The-Grid.ttf') format('truetype');
+}
+
+/* Styles */
+#app_header{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 20%;
+  z-index: 100;
+  background-image: url('/img/upb_logo.png');
+  background-repeat: no-repeat;
+  background-position: 95%;
+  background-size: auto 62%;
+  background-color: #00dc70;
+
+  box-shadow: 0 5px 40px 0px #8A767D;
+}
+
+#text_logo_container{
+  position: relative;
+  display: block;
+  width: 50%;
+  height: 54%;
+  top: 22%;
+  color: white;
+}
+
+#text_logo{
+  font-family: EtG;
+  font-size: 48px;
+  padding-left: 20px;
+}
+
+#app_container{
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 80%;
+}

@@ -1,0 +1,64 @@
+#measure_container{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* measure_wrapper */
+.measure_wrapper_container{
+  position: relative;
+  display: inline-block;
+  float: left;
+  margin: 20px 0 0 35px;
+  width: 35%;
+  height: 35%;
+  border-radius: 10px 10px 10px 10px;
+  border: #919191 1px solid;
+}
+
+.measure_name{
+  position: relative;
+  display: block;
+  width: 90%;
+  height: auto;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 15px;
+  color: #919191;
+  padding-top: 10px;
+}
+
+.measure_value{
+  position: relative;
+  display: block;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 28px;
+  color: black;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.measure_units{
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* no_measures */
+
+#no_measures_text{
+  position: relative;
+  display: block;
+  width: 80%;
+  height: 100px;
+  margin: 0 auto;
+  padding-top: 20px;
+  color:#919191;
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+}

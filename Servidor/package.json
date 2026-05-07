@@ -1,0 +1,21 @@
+{
+  "name": "server_hub",
+  "version": "0.0.1",
+  "description": "Servidor para recibir datos desde la BBB",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Telemedicine",
+    "IoMT"
+  ],
+  "author": "Centro de Bioingeniería",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.4",
+    "winston": "^2.3.1"
+  }
+}
