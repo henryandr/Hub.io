@@ -4,12 +4,12 @@ Hub.IO now includes a modern Raspberry Pi 4 medical IoT gateway focused on Bluet
 
 ## Current architecture
 
-- `/home/runner/work/Hub.io/Hub.io/Comunicaciones`: Raspberry Pi communication layer.
+- `Comunicaciones/`: Raspberry Pi communication layer.
   - Legacy code under `libs/` keeps the original Bluegiga/BGAPI implementation.
   - `main.py` is now the Python 3 entrypoint for the modern BLE-to-FHIR gateway.
   - `gateway/` contains BLE capture, IEEE 11073 parsing, FHIR bundle construction, and HTTP delivery.
-- `/home/runner/work/Hub.io/Hub.io/Config_web_BBB`: legacy Express + Socket.IO web UI used to pair devices and inspect measurements locally.
-- `/home/runner/work/Hub.io/Hub.io/Servidor`: legacy Node.js backend skeleton.
+- `Config_web_BBB/`: legacy Express + Socket.IO web UI used to pair devices and inspect measurements locally.
+- `Servidor/`: legacy Node.js backend skeleton.
 
 ## Data flow
 
@@ -24,16 +24,17 @@ Hub.IO now includes a modern Raspberry Pi 4 medical IoT gateway focused on Bluet
 ### Install
 
 ```bash
-cd /home/runner/work/Hub.io/Hub.io/Comunicaciones
+cd Comunicaciones
 python3 -m pip install -r requirements.txt
 ```
 
 ### Configure
 
-Edit `/home/runner/work/Hub.io/Hub.io/Comunicaciones/config.json`:
+Edit `Comunicaciones/config.json`:
 
 - `backend.endpoint_url`: remote FHIR endpoint
 - `backend.auth_token`: optional bearer token
+- `backend.verify_tls`: keep `true` in production; set `false` only for controlled test environments with self-signed certificates
 - `patient`: patient identity used in emitted bundles
 - `ble.device_name_prefixes`: optional device name filters
 - `ble.device_address_allowlist`: optional MAC allowlist
@@ -42,13 +43,13 @@ Edit `/home/runner/work/Hub.io/Hub.io/Comunicaciones/config.json`:
 ### Run
 
 ```bash
-cd /home/runner/work/Hub.io/Hub.io/Comunicaciones
+cd Comunicaciones
 python3 main.py
 ```
 
 ## Validation
 
 ```bash
-cd /home/runner/work/Hub.io/Hub.io/Comunicaciones
+cd Comunicaciones
 PYTHONPATH=. python3 -m unittest discover -s tests
 ```
