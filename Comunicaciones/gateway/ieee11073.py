@@ -34,13 +34,9 @@ def decode_11073_sfloat(raw: bytes) -> float:
         raise ValueError("IEEE 11073 SFLOAT requires 2 bytes")
 
     value = int.from_bytes(raw, byteorder="little", signed=False)
-    mantissa = value & 0x0FFF
+    raw_mantissa = value & 0x0FFF
+    mantissa = raw_mantissa
     exponent = (value >> 12) & 0x000F
-
-    if mantissa >= 0x0800:
-        mantissa = -((0x1000 - mantissa) & 0x0FFF)
-    if exponent >= 0x0008:
-        exponent = -((0x0010 - exponent) & 0x000F)
 
     special = {
         0x07FE: math.inf,
@@ -49,8 +45,13 @@ def decode_11073_sfloat(raw: bytes) -> float:
         0x0801: math.nan,
         0x0802: -math.inf,
     }
-    if value in special:
-        return special[value]
+    if raw_mantissa in special:
+        return special[raw_mantissa]
+
+    if mantissa >= 0x0800:
+        mantissa = -((0x1000 - mantissa) & 0x0FFF)
+    if exponent >= 0x0008:
+        exponent = -((0x0010 - exponent) & 0x000F)
 
     return mantissa * pow(10, exponent)
 
