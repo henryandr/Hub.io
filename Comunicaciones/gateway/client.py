@@ -27,7 +27,9 @@ class FhirClient:
 
         context = None
         if self.config.endpoint_url.startswith("https") and not self.config.verify_tls:
-            context = ssl._create_unverified_context()
+            context = ssl.create_default_context()
+            context.check_hostname = False
+            context.verify_mode = ssl.CERT_NONE
 
         with urllib.request.urlopen(request, timeout=self.config.timeout_seconds, context=context) as response:
             body = response.read().decode("utf-8", errors="ignore")

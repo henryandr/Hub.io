@@ -99,7 +99,7 @@ def parse_blood_pressure_measurement(raw: bytes) -> List[Measurement]:
             Measurement(
                 code="8867-4",
                 display="Heart rate",
-                value=round(decode_11073_sfloat(raw[offset:offset + 2]), 2),
+                value=round(decode_11073_sfloat(raw[offset:offset+2]), 2),
                 unit="beats/minute",
                 system="http://unitsofmeasure.org",
                 unit_code="/min",

@@ -19,6 +19,7 @@ class FhirBundleBuilder:
 
     def build(self, readings: List[DeviceReading]) -> Dict[str, object]:
         bundle_entries = []
+        timestamp = None
         patient_full_url, patient_resource = self._build_patient()
         bundle_entries.append({"fullUrl": patient_full_url, "resource": patient_resource})
 
@@ -67,11 +68,13 @@ class FhirBundleBuilder:
                         },
                     }
                 )
+                if timestamp is None:
+                    timestamp = measurement.effective_time
 
         return {
             "resourceType": "Bundle",
             "type": "collection",
-            "timestamp": readings[0].measurements[0].effective_time if readings else None,
+            "timestamp": timestamp,
             "entry": bundle_entries,
         }
 
