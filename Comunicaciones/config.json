@@ -1,29 +1,29 @@
-// Configuration file for the hub.io data getter
-// Centro de Bioingenieria UPB V 1.0
-// June 2017
-
 {
-	"version" : "1.0",
-	"log_path" : "./Logs/report.log",
-	"debug" : "true", // This activate console logs
-	"interfaces" : [
-		{
-			"type" : "wifi",
-			"uart" : "/dev/ttyO2",
-			"baudrate" : 9600
-		},
-		{
-			"type" : "zigbee",
-			"uart" : "/dev/ttyO3",
-			"baudrate" : 115200
-		},
-		{
-			"type" : "ble",
-			"uart" : "/dev/ttyO4",
-			"baudrate" : 9600
-		}
-	],
-	"HL7_v" : "2.6",
-	"base_url" : "http://localhost:8080/api/",
-	"api_v" : "0.1"
+  "log_level": "INFO",
+  "poll_interval_seconds": 30,
+  "run_once": true,
+  "patient": {
+    "identifier_system": "https://hub.io/patients",
+    "identifier_value": "patient-demo",
+    "given_name": "Paciente",
+    "family_name": "Demo",
+    "gender": "unknown"
+  },
+  "backend": {
+    "endpoint_url": "http://localhost:8080/fhir",
+    "timeout_seconds": 10,
+    "verify_tls": true
+  },
+  "ble": {
+    "scan_duration_seconds": 8,
+    "notification_timeout_seconds": 5,
+    "device_name_prefixes": [
+      "A&D",
+      "OMRON",
+      "Nonin",
+      "Hub"
+    ],
+    "device_address_allowlist": [],
+    "mock_mode": true
+  }
 }
